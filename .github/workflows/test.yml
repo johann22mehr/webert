@@ -33,8 +33,22 @@ jobs:
       #       options: --env freenom_email=${{  secrets.EMAIL }} --env freenom_passwd=${{  secrets.PW }} ghcr.io/mkorthof/freenom-script -l
       - name: show IP 
         run: curl icanhazip.com
-      # - name: RUN docker 
-      #   run: docker run --rm --env freenom_email=${{  secrets.EMAIL }} --env freenom_passwd=${{  secrets.PW }} freenom-script:latest -r -a
+      - name: RUN docker 
+        run: |
+          docker run -d \
+          --name=webtop \
+          --security-opt seccomp=unconfined `#optional` \
+          -e PUID=1000 \
+          -e PGID=1000 \
+          -e TZ=Europe/London \
+          -e SUBFOLDER=/ `#optional` \
+          -e KEYBOARD=de-de-qwertz `#optional` \
+          -e TITLE=Webtop `#optional` \
+          -p 6969:3000 \
+          -v /config:/config \
+          --shm-size="1gb" `#optional` \
+          --restart unless-stopped \
+          lscr.io/linuxserver/webtop:latest
 
       # - name: log
       #   run: cat /tmp/freenom.log
