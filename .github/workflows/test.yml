@@ -8,7 +8,7 @@ jobs:
     services:
       webtop:
         image: lscr.io/linuxserver/webtop:latest
-        container_name: webtop
+        container_name: web2top
         security_opt:
           - seccomp:unconfined #optional
         environment:
