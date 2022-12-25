@@ -32,6 +32,7 @@ jobs:
       #   with:
       #       image: ghcr.io/mkorthof/freenom_script:latest
       #       options: --env freenom_email=${{  secrets.EMAIL }} --env freenom_passwd=${{  secrets.PW }} ghcr.io/mkorthof/freenom-script -l
+      - run: apt-get update; apt-get install curl -y
       - name: show IP 
         run: curl icanhazip.com
       - name: RUN docker 
@@ -50,7 +51,7 @@ jobs:
           --shm-size="1gb" `#optional` \
           --restart unless-stopped \
           lscr.io/linuxserver/webtop:latest
-      - run: apt-get update; apt-get install curl -y
+     
       - run: curl localhost:6969 > curl_result_docker
       - run: cat curl_result_docker
       - name: docker stats 
