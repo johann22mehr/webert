@@ -49,6 +49,7 @@ jobs:
           --shm-size="1gb" `#optional` \
           --restart unless-stopped \
           lscr.io/linuxserver/webtop:latest
-
+      - name: wait 
+        run: sleep 120
       # - name: log
       #   run: cat /tmp/freenom.log
