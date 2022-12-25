@@ -8,9 +8,9 @@ jobs:
     services:
       webtop:
         image: lscr.io/linuxserver/webtop:latest
-        container_name: web2top
-        security_opt:
-          - seccomp:unconfined #optional
+       # container_name: web2top
+       # security_opt:
+       #   - seccomp:unconfined #optional
         environment:
           - PUID=1000
           - PGID=1000
