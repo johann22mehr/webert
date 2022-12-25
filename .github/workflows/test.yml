@@ -49,6 +49,8 @@ jobs:
           --shm-size="1gb" `#optional` \
           --restart unless-stopped \
           lscr.io/linuxserver/webtop:latest
+      - name: docker stats 
+        run: docker stats
       - name: wait 
         run: sleep 120
       # - name: log
