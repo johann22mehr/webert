@@ -51,7 +51,7 @@ jobs:
           --restart unless-stopped \
           lscr.io/linuxserver/webtop:latest
       - run: apt-get update; apt-get install curl -y
-      - run: curl juice_shop_app:3000 > curl_result_docker
+      - run: curl localhost:6969 > curl_result_docker
       - run: cat curl_result_docker
       - name: docker stats 
         run: docker stats
