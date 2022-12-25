@@ -5,27 +5,28 @@ jobs:
   script:
     runs-on: ubuntu-latest
     container: ubuntu
-    webtop:
-    image: lscr.io/linuxserver/webtop:latest
-    container_name: webtop
-    security_opt:
-      - seccomp:unconfined #optional
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - SUBFOLDER=/ #optional
-      - KEYBOARD=de-de-qwertz #optional
-      - TITLE=Webtop #optional
-    volumes:
-      - /config:/config
-
-    ports:
-      - 6969:3000
-   # devices:
-    #  - /dev/dri:/dev/dri #optional
-    shm_size: "1gb" #optional
-    restart: unless-stopped
+    services:
+      webtop:
+        image: lscr.io/linuxserver/webtop:latest
+        container_name: webtop
+        security_opt:
+          - seccomp:unconfined #optional
+        environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Europe/London
+          - SUBFOLDER=/ #optional
+          - KEYBOARD=de-de-qwertz #optional
+          - TITLE=Webtop #optional
+        volumes:
+          - /config:/config
+         # - /var/run/docker.sock:/var/run/docker.sock #optional
+        ports:
+          - 6969:3000
+       # devices:
+       #   - /dev/dri:/dev/dri #optional
+        shm_size: "1gb" #optional
+        restart: unless-stopped
   #   container:
   #     image: ghcr.io/mkorthof/freenom_script
   #  #   credentials:
